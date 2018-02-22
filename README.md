@@ -7,3 +7,5 @@ It features partial software implementation of the I2C and SPI protocols, a 20x4
 To load the program into the device, I made a small script to convert the assembled binaries to C arrays and a PSoC5 firmware to store that data inside the ROM (flash) chip.
 
 Unfortunately, due to time constraints (being part of a project which had to be completed in around 5 weeks), the main software was rushed. Therefore, although functional and stable, only the essentials features to carry its tasks were implemented.
+
+![dreadnought](https://user-images.githubusercontent.com/36741050/36557215-567cc37a-1810-11e8-969b-55706240e588.png)
