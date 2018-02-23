@@ -340,8 +340,7 @@ clear_line	ldx #$14
 ;
 ;  DESCRIPTION:   output a string at the cursor position on LCD
 ;----------------------------------------------------------------------------------
-;  ARGUMENTS: MSB of the string address must be in Y
-;	      LSB on zero page (string_lsb)
+;  ARGUMENTS: LSB on zero page (string_lsb), MSB at string_lsb+1
 ;  RETURNS:   none	  
 ;----------------------------------------------------------------------------------
 write_string	ldy #$0
