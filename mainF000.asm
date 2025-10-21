@@ -6,12 +6,6 @@
 ;	them on a character LCD screen and send them over UART on request. 
 ;	- Also do bleeps and blops -
 ;
-; Todo:	- Remove test code artifacts
-;	- ZP needs to be cleaned
-;	- Stacks have feelings too! It feels left out.
-;	  Is "but Zero Page is faster" really a good excuse?
-;	- Use a coherent and consistant calling convention
-;	- Use loops instead of copy/paste in non time-critical sections
 ;---------------------------------------------------------------------------
 
 *=$f000
@@ -26,10 +20,7 @@ SID_LOAD_M   	= $10
 SID_LOAD_L	= $00
 SID_LENGTH   	= $0D		; length in pages
 
-;------ Zero page statics -----------------------------------
-; Muhahah KERNAL, they are all mine now.
-; TODO: a bit of cleaning would not hurt though. 
-
+;------ Zero page variables -----------------------------------
 ;; Leave $0-$10 & $F0-$FF clean, as they are 
 ;; statistically the most used for SID.
 
@@ -250,7 +241,6 @@ main_loop
 
 
 ;---------------------- I/O, String formatting and misc subroutines -----------------
-; Collectively called "The Crysis Kernel" (yes it can run Crysis please stop asking)
 
 
 ;------- LCD ------------------------------------------------------------------------
@@ -1192,7 +1182,6 @@ i2c_read	stz i2c_buffer
 ;  ARGUMENTS: None
 ;  RETURNS:   (none) 8 bit unsigned values on Zero Page (humidity, air_temp)
 ;----------------------------------------------------------------------------------
-; todo: comments!!1
 
 get_i2c_vals	lda #$27
 		asl 
@@ -1303,7 +1292,6 @@ get_i2c_vals	lda #$27
 ;  ARGUMENTS: (none) Values on ZP, num1_msb, num1_lsb, num2_msb, num2_lsb
 ;  RETURNS:   (none) Value on ZP, result1 to result4
 ;----------------------------------------------------------------------------------
-; Todo: Comments!!
 
 multiply	lda #$00
 		sta result3
@@ -1372,3 +1360,4 @@ adc_str		!raw "ADC val: ", 0
 humidity_str	!raw "Humidity: ", 0
 temperature_str !raw "Temperature: ", 0
 ph_str		!raw "pH: ", 0
+
